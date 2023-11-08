@@ -1,26 +1,22 @@
 'use strict';
+
 const lists = document.querySelector('.list');
-while (true) {
-    let userInput = prompt("Введите строку:");
+const body = document.querySelector('body');
+body.append(lists);
 
-    if (userInput === null || userInput.toLowerCase() === "exit") {
-      break;
+const addLink = () => {
+    const userInput = prompt('Введите что-нибудь')
+    if (userInput === 'del') {
+        lists.removeChild(lists.lastChild)
+    } else if (userInput === 'clear') {
+        lists.replaceChildren();
+    } else if (userInput === null || userInput === 'exit') {
+        return null;
+    } else if (userInput && userInput.trim() === '') {
+        alert('Вы ввели пустое значение');        
+    } else {
+        lists.insertAdjacentHTML('beforeend', `<li>${userInput}</li>`);
     }
-    
-    userInput = userInput.trim();
-
-    if (userInput.length > 0) {
-      const list = document.querySelector(".list");
-      const listItem = document.createElement("li");
-      listItem.appendChild(document.createTextNode(userInput));
-      list.appendChild(listItem);
-    } else if (userInput.toLowerCase() === "del") {
-      const listItems = document.getElementsByTagName("li");
-      if (listItems.length > 0) {
-        listItems[listItems.length - 1].remove();
-      }
-    } else if (userInput.toLowerCase() === "clear") {
-      const list = document.getElementById("list");
-      list.innerHTML = "";
-    }
-  }
+    addLink();
+}
+addLink();

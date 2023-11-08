@@ -1,0 +1,48 @@
+const text = document.createTextNode(some text)
+elem.append(text)
+создаем переменную, получаем с помощью querySelector и добавляем с помощью методжа append
+elem.textContent = text - другой способ добавления текста, но он полностью заменяет весь текст внутри, если он там есть, но можно = поменять на += и все будет работать нормально
+
+
+innerHTML это свойство содержит верстку, вместе со всеми тегами
+outerHTML тоже что и выше, но затирает ваще все свойства
+
+
+insertAdjacentHTML 
+
+beforebegin / перед открывающимся тегом
+<h2>
+afterbegin / после открывающегося тега
+content
+beforeend / перед закрывающимся тегом
+</h2>
+afterend / после закрывающегося тега
+
+text.textContent = ''   - лучший способ как сделать элемент пустым
+
+
+
+insertAdjacentElement
+
+
+
+                                                            добавление стилей через js
+
+const elem = document.querySelector('.class')
+elem.style.color = 'red' - цвет текста стал зеленый
+elem.style.backgroundColor = 'black' - задний фон черный
+
+elem.style.cssText = `
+    color: green;
+    backgroundColor: black;
+`; -      тоже самое, но более удобно написано
+
+const styled = getComputedStyle(elem); - получаем стили которые вычислил браузер
+console.log(styled) 
+
+
+
+
+
+                                          позиционирование элементов
+    console.log(elem.getBoundingClientRect()) - получаем от пользователя позиционирование элемента, например на какой высоте находится блок

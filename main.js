@@ -12,10 +12,8 @@ const addLink = () => {
         lists.replaceChildren();
     } else if (userInput === null || userInput === 'exit') {
         return null;
-    } else if (userInput && userInput.trim() === '') {
-        alert('Вы ввели пустое значение');        
-    } else {
-        lists.insertAdjacentHTML('beforeend', `<li>${userInput}</li>`);
+    } else if (userInput.trim() !== '') {
+        lists.insertAdjacentHTML('beforeend', `<li>${userInput}</li>`);        
     }
     addLink();
 }

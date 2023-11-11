@@ -1,28 +1,35 @@
 'use strict';
 
-const lists = document.querySelector('.list');
+const ul = document.createElement('ul');
+const body = document.querySelector('body');
+body.append(ul);
+
+const userInput = () => {
+   const ttt = prompt('Введите что-нибудь');
+   return ttt;
+};
+const createLI = (text) => {
+    ul.insertAdjacentHTML('beforeend', `<li>${text}</li>`);
+};
+const delLI = () => {
+    ul.removeChild(ul.lastChild)
+};
+const clearUL = () => {
+    ul.replaceChildren();
+};
 
 const addLink = () => {
-    const userInput = prompt('Введите что-нибудь')
-    const createLI = () => {
-        lists.insertAdjacentHTML('beforeend', `<li>${userInput}</li>`);
-    };
-    const delLI = () => {
-        lists.removeChild(lists.lastChild)
-    };
-    const clearUL = () => {
-        lists.replaceChildren();
-    }
+   const text = userInput();
 
-    if (userInput === 'del') {
+    if (text === 'del') {
         delLI();
-    } else if (userInput === 'clear') {
+    } else if (text === 'clear') {
         clearUL();
-    } else if (userInput === null || userInput === 'exit') {
+    } else if (text === null || text === 'exit') {
         return null;
-    } else if (userInput.trim() !== '') {
-        createLI();        
+    } else if (text.trim() !== '') {
+        createLI(text);        
     }
     addLink();
-}
+};
 addLink();

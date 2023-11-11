@@ -1,19 +1,27 @@
 'use strict';
 
 const lists = document.querySelector('.list');
-const body = document.querySelector('body');
-body.append(lists);
 
 const addLink = () => {
     const userInput = prompt('Введите что-нибудь')
-    if (userInput === 'del') {
+    const createLI = () => {
+        lists.insertAdjacentHTML('beforeend', `<li>${userInput}</li>`);
+    };
+    const delLI = () => {
         lists.removeChild(lists.lastChild)
-    } else if (userInput === 'clear') {
+    };
+    const clearUL = () => {
         lists.replaceChildren();
+    }
+
+    if (userInput === 'del') {
+        delLI();
+    } else if (userInput === 'clear') {
+        clearUL();
     } else if (userInput === null || userInput === 'exit') {
         return null;
     } else if (userInput.trim() !== '') {
-        lists.insertAdjacentHTML('beforeend', `<li>${userInput}</li>`);        
+        createLI();        
     }
     addLink();
 }
